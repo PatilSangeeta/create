@@ -1,0 +1,781 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0047)http://designarchive.in/COLLECZONI/Welcome.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml" class=" js cssanimations">
+<head>
+    <title>Design Shapes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="icon" href="http://designarchive.in/COLLECZONI/images/caicon.gif" type="image/gif" sizes="16x16">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style_new.css" rel="stylesheet">
+    <link href="css/variable.css" rel="stylesheet">
+    <!-- <link href="css/font-awesome.min.css" rel="stylesheet"> -->
+    <link href="css/ruler.min.css" rel="stylesheet">
+    <link href="css/all.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="header">
+                <div class="col-md-2 col-sm-3 col-2 logo"><img src="images/ca_logo.png"></div>
+                <div class="col-md-6 col-sm-4 col-12" id="searchbox">
+                    
+                </div>
+                <div class="col-md-4 col-sm-5 col-12 align_right" >
+                    <div class="card_name_top">Card Name: <input type="text"  /></div>
+                    <button class="btn btn-default">Save</button>&nbsp;  &nbsp;<button class="btn btn_exit">Exit</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="shapes">
+                <p>Pages</p>
+                
+                <div class="tool_btn"><button class="add_page">Add Page</button></div>
+
+                <div class="pages_list">
+                    <ul>
+                        <li><div class="page selected"></div>Page1</li>
+                        <li><div class="page"></div>Page2</li>
+                        <li><div class="page"></div>Page3</li>
+                        <li><div class="page"></div>Page1</li>
+                        <li><div class="page"></div>Page2</li>
+                        <li><div class="page"></div>Page3</li>
+                        <li><div class="page"></div>Page1</li>
+                        <li><div class="page"></div>Page2</li>
+                        <li><div class="page"></div>Page3</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="toolbar">
+                <ul>
+                    <li><div class="tool" title="Square" id="square"><div class="square"></div></div></li>
+                    <li><div class="tool" title="Rectangle" id="rectangle"><div class="rectangle"></div></div></li>
+                    <li><div class="tool" title="Circle" id="circle"><div class="circle"></div></div></li>
+                    <li><div class="tool" title="Triangle" id="triangle"><div class="triangle"></div></div></li>
+                    <li style="position: relative;"><input type="checkbox" name="" id="drawingModeEl" style="position: absolute; top:0"><div class="tool" title="Pencil" id="drawingMode"><i class="fas fa-pencil-alt"></i></div></li>
+                    <li><div class="tool" title="Text" id="addTxt"><div>T</div></div></li>
+                    <li><div class="tool" title="Barcode" id="barcode"><i class="fa fa-barcode"></i></div></li>
+                </ul>
+
+            </div>
+            <div class="design_card_part" id="ruler_wrap" >
+                <div class="card_box_inr">
+                    <div class="draw_layout">
+                        <canvas id="design_canvas" height="600" width="800"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="design_property">
+                <p>Alignment</p>
+                <div class="tool_btn">
+                    <ul>
+                        <li><div class="tool" title="Align Left" id="objAlignLeft"><div class="alignment align_left"></div></div></li>
+                        <li><div class="tool" title="Align Center" id="objAlignCenter"><div class="alignment align_center"></div></div></li>
+                        <li><div class="tool" title="Align Right" id="objAlignRight"><div class="alignment align_right"></div></div></li>
+                        <li><div class="tool" title="Align Top" id="objAlignTop"><div class="alignment align_top"></div></div></li>
+                        <li><div class="tool" title="Align Middle" id="objAlignMiddle"><div class="alignment align_middle"></div></div></li>
+                        <li><div class="tool" title="Align Bottom" id="objAlignBottom"><div class="alignment align_bottom"></div></div></li>
+                    </ul>
+                </div>
+
+                <p>Order</p>
+                <div class="tool_btn">
+                    <ul>
+                        <li><div class="tool" title="Bring Forward" id="bringForward"><div class="order bring_forward"></div></div></li>
+                        <li><div class="tool" title="Bring Front" id="bringFront"><div class="order bring_front"></div></div></li>
+                        <li><div class="tool" title="Send Backward" id="sendBackward"><div class="order send_backward"></div></div></li>
+                        <li><div class="tool" title="Send Back" id="sendBack"><div class="order send_back"></div></div></li>
+                    </ul>
+                </div>
+
+                <p>Others</p>
+                <div class="tool_btn">
+                    <ul>
+                        <li><div class="tool" title="Copy" id="copy" onclick="Copy()"><i class="fa fa-copy"></i></div></li>
+                        <li><div class="tool" title="Paste" id="paste" onclick="Paste()"><i class="fa fa-paste"></i></div></li>
+                        <li><div class="tool" title="Remove" id="remove_object"><i class="fa fa-trash"></i></div></li>
+                        <li><div class="tool" title="Group" id="group"><i class="fas fa-object-group"></i></div></li>
+                        <li><div class="tool" title="Ungroup" id="ungroup"><i class="fas fa-object-ungroup"></i></div></li>
+                        <li><div class="tool" title="Select All" id="multiselect"><div class="alignment select_all"></div></div></li>
+                        <li><div class="tool" title="Discard" id="discard"><div class="alignment discard"></div></div></li>
+                    </ul>
+                </div>
+                <div>
+                    <p>Page Size</p>
+                    <div class="tool_btn">
+                        <div class="inln_blk"><input type="text" name=""  class="input_txt" /><br/>Width</div>
+                        <div class="lock"><i class="fa fa-lock"></i></div>
+                        <div class="inln_blk"><input type="text" name=""  class="input_txt" /><br/>Height</div> 
+
+                        <select class="select_style" style="margin-top: 15px;" id="canvas_size" onchange="canvas_size();">
+                            <option value="customSize" selected>Custom Size </option>
+                            <option value="A0">A0</option>
+                            <option value="A1">A1</option>
+                            <option value="A2">A2</option>
+                            <option value="A3">A3</option>
+                            <option value="A4">A4</option>
+                            <option value="A5">A5</option>
+                            <option value="A6">A6</option>
+                            <option value="A7">A7</option>
+                            <option value="A8">A8</option>
+                            <option value="A9">A9</option>
+                            <option value="A10">A10</option>
+                        </select>
+
+                    </div>
+
+                    <p>Background</p>
+                    <div class="tool_btn">
+                        <input class="select_style" type="file" id="bgImg" onchange="setBgImg()"> <br/>
+                        Background Color <input type="color" name="" value="#eff0f1" class="input_txt" id="setBgColor"> 
+                        <button class="btn tool_btn_txt" title="Remove Background Image/Color" onclick="removeBgImg()">Remove Background Image/Color</button>
+                        
+
+                    </div>
+
+                    <p>Shadow</p>
+                    <div class="tool_btn">
+                        <input type="checkbox" name="" value="shadow" onclick='shadowify()'> Set Shadow<br>
+                        <div style="font-size: 10px; padding-top: 5px">
+                            <div class="inln_blk"><input type="text" name=""  class="input_txt"  id="setShadowOffsetX" /><br/>OffsetX</div>
+                            <div class="inln_blk"><input type="text" name=""  class="input_txt"  id="setShadowOffsetY" /><br/>OffsetY</div>
+                            <div style="padding:5px "></div>
+                            <div class="inln_blk"><input type="text" name=""  class="input_txt"  id="setShadowBlur" /><br/>Blur</div>
+                            <div class="inln_blk"><input type="color" name=""  value="#eff0f1" class="input_txt"  id="setShadowColor" /><br/>Color</div>
+                        </div>
+                    </div>
+
+                    <p>Ruler</p>
+                    <div class="tool_btn">
+                       <p> <input type="checkbox" name="" value="ruler" onclick="hideRuler1()"> Hide Ruler</p>
+                        <p> <input type="checkbox" name="" value="ruler" onclick="hideGuides1()"> Hide Guides</p>
+                    </div>
+
+                </div>
+
+                <div>
+                    <p> <input type="checkbox" name="" value=""> Design Name</p>
+                    <p> <input type="checkbox" name="" value=""> Variant Name</p>
+
+                    <p>Dimentions</p>
+                    <div class="tool_btn">
+                        <div style="font-size: 10px">
+                            <div class="inln_blk"><input type="text" name=""  class="input_txt" id="width-control"/><br/>Width</div>
+                            <div class="lock"><i class="fa fa-lock"></i></div>
+                            <div class="inln_blk"><input type="text" name=""  class="input_txt" id="height-control"/><br/>Height</div> 
+                        </div>
+                        
+                        <div class="position">
+                            <div class="inln_blk"><input type="text" name=""  class="input_txt" id="left-control"/><br/>X-position</div>
+                            <div class="inln_blk"><input type="text" name=""  class="input_txt" id="top-control"/><br/>Y-Position</div>
+                            <div class="inln_blk"><input type="text" name=""  class="input_txt" id="angle-control"/><br/>Rotation</div> 
+                        </div>
+
+                    </div>
+
+                    <p>Opacity</p>
+                    <div class="tool_btn" style="font-size: 10px">
+                        <input type="range" value="0" min="0" max="100" id="alpha">
+                        <div class="floatLeft">0</div>
+                        <div class="floatRight">100</div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/fabric.js"></script>
+    <script src="js/ruler.min.js"></script>
+    <script>
+        
+            var window_height = $(window).height() - 65;
+            var window_height1 = $(window).height() - 145;
+                       
+            $('.design_card_part, .shapes, .toolbar, .design_property').height(window_height);  
+            $('.pages_list').height(window_height1);  
+             
+        
+    </script>
+
+    <script>
+
+        var canvas = this.__canvas = new fabric.StaticCanvas('design_canvas');
+        
+        $("#square").click(function () {
+            canvas.add(
+                new fabric.Rect({ top: 100, left: 100, width: 100, height: 100, fill: '#424242', stroke: '#ccc', strokeWidth: 1, })
+            );
+        });
+
+        $("#triangle").click(function () {
+            canvas.add(
+                new fabric.Triangle({ top: 300, left: 210, width: 100, height: 100, fill: '#424242', stroke: '#ccc', strokeWidth: 1 })
+            );
+        });
+
+        $("#rectangle").click(function () {
+            canvas.add(
+                new fabric.Rect({ top: 100, left: 200, width: 200, height: 100, fill: '#424242', stroke: '#ccc', strokeWidth: 1, rx: 10, ry: 10})
+            );
+           
+        });
+
+        $("#circle").click(function () {
+            canvas.add(
+                new fabric.Circle({ top: 140, left: 230, radius: 75, fill: '#424242', stroke: '#ccc', strokeWidth: 1})
+            );
+        });
+
+        $("#addTxt").click(function(){
+            var textbox = new fabric.Textbox('Design Name', {left: 50, top: 50, width: 150, fontSize: 14});
+            canvas.add(textbox).setActiveObject(textbox);
+        });
+
+        $("#barcode").click(function () {
+            canvas.add(
+                new fabric.Rect({ top: 200, left: 100, width: 100, height: 50, fill: '#ccc', stroke: '#ccc', strokeWidth: 1, })
+            );
+        });
+
+        $('#shadow').click(function() {       
+           var obj = canvas.getActiveObject();
+           if (obj.type == 'activeSelection'){
+                obj.forEachObject(function(object) {
+                    object.setShadow({ color: "rgba(0, 0, 0, 0.3)", blur: 2,offsetX: -4, offsetY: 3 });
+                });
+           }
+           else{
+                canvas.getActiveObject().setShadow({ color: "rgba(0, 0, 0, 0.3)", blur: 2,offsetX: -4, offsetY: 3 ,});
+           }
+        });
+
+        $('#drawingModeEl').click(function() {    
+        canvas.isDrawingMode = !canvas.isDrawingMode;
+        if (canvas.isDrawingMode) {
+          drawingModeEl.innerHTML = 'Cancel drawing mode';
+          canvas.freeDrawingBrush.width = 2;
+        }
+        else {
+          drawingModeEl.innerHTML = 'Enter drawing mode';
+        }
+      });
+
+        $("#drawingMode").click(function(){
+            //drawing = window._canvas = new fabric.Canvas('design_canvas');
+            drawing.isDrawingMode= 1;
+            canvas.freeDrawingBrush.width = 2;
+            drawing.renderAll();
+        });
+
+        var $ = function(id){return document.getElementById(id)};
+
+        var canvas = this.__canvas = new fabric.Canvas('design_canvas');
+          
+        fabric.Object.prototype.transparentCorners = false;
+
+
+  var group = $('group'),
+      ungroup = $('ungroup'),
+      multiselect = $('multiselect'),
+      discard = $('discard');
+
+      //addmore.onclick = add;
+      multiselect.onclick = function() {
+        canvas.discardActiveObject();
+        var sel = new fabric.ActiveSelection(canvas.getObjects(), {
+          canvas: canvas,
+        });
+        canvas.setActiveObject(sel);
+        canvas.requestRenderAll();
+      }
+      
+      group.onclick = function() {
+        if (!canvas.getActiveObject()) {
+          return;
+        }
+        if (canvas.getActiveObject().type !== 'activeSelection') {
+          return;
+        }
+        canvas.getActiveObject().toGroup();
+        canvas.requestRenderAll();
+      }
+
+      ungroup.onclick = function() {
+        if (!canvas.getActiveObject()) {
+          return;
+        }
+        if (canvas.getActiveObject().type !== 'group') {
+          return;
+        }
+        canvas.getActiveObject().toActiveSelection();
+        canvas.requestRenderAll();
+      }
+
+      discard.onclick = function() {
+        debugger
+        canvas.discardActiveObject();
+        canvas.requestRenderAll();
+      };
+
+        
+        function Copy() {
+            // clone what are you copying since you
+            // may want copy and paste on different moment.
+            // and you do not want the changes happened
+            // later to reflect on the copy.
+            canvas.getActiveObject().clone(function(cloned) {
+                _clipboard = cloned;
+            });
+        }
+
+        function Paste() {
+            // clone again, so you can do multiple copies.
+            _clipboard.clone(function(clonedObj) {
+                canvas.discardActiveObject();
+                clonedObj.set({
+                    left: clonedObj.left + 10,
+                    top: clonedObj.top + 10,
+                    evented: true,
+                });
+                if (clonedObj.type === 'activeSelection') {
+                    // active selection needs a reference to the canvas.
+                    clonedObj.canvas = canvas;
+                    clonedObj.forEachObject(function(obj) {
+                        canvas.add(obj);
+                    });
+                    // this should solve the unselectability
+                    clonedObj.setCoords();
+                } else {
+                    canvas.add(clonedObj);
+                }
+                _clipboard.top += 10;
+                _clipboard.left += 10;
+                canvas.setActiveObject(clonedObj);
+                canvas.requestRenderAll();
+            });
+        }
+
+        function canvas_size() {
+           // var canvas = document.getElementsByClassName("upper-canvas");
+            var canvas_size = jQuery("#canvas_size").find("option:selected").val();//document.getElementById("canvas_size").value;
+
+            if (canvas_size == "customSize") {                
+                canvas.setWidth(800);
+                canvas.setHeight(600);
+            }
+            else if(canvas_size == "A0")
+            {
+                canvas.setWidth(2384);
+                canvas.setHeight(3370);
+            }
+            else if (canvas_size == "A1") {
+                canvas.setWidth(1684);
+                canvas.setHeight(2384);
+            }
+            else if (canvas_size == "A2") {
+                canvas.setWidth(1191);
+                canvas.setHeight(1684);
+            }
+            else if (canvas_size == "A3") {
+                canvas.setWidth(842);
+                canvas.setHeight(1191);
+            }
+            else if (canvas_size == "A4") {
+                canvas.setWidth(595);
+                canvas.setHeight(842);
+            }
+            else if (canvas_size == "A5") {
+                canvas.setWidth(420);
+                canvas.setHeight(595);
+            }
+            else if (canvas_size == "A6") {
+                canvas.setWidth(298);
+                canvas.setHeight(420);
+            }
+            else if (canvas_size == "A7") {
+                canvas.setWidth(210);
+                canvas.setHeight(298);
+            }
+            else if (canvas_size == "A8") {
+                canvas.setWidth(147);
+                canvas.setHeight(210);
+            }
+            else if (canvas_size == "A9") {
+                canvas.setWidth(105);
+                canvas.setHeight(147);
+            }
+            else if (canvas_size == "A10") {
+                canvas.setWidth(74);
+                canvas.setHeight(105);
+            }
+            else {
+                canvas.setWidth(800);
+                canvas.setHeight(600);
+            }
+        }
+
+        jQuery("#page_width").on("change",function () 
+        {
+            if (jQuery("#page_width").val() != "" && parseInt(jQuery("#page_width").val()) > 0)
+            {
+                var height = canvas.height + parseInt(jQuery("#page_width").val());
+                var width = parseInt(jQuery("#page_width").val());
+                canvas.setWidth(width);
+                canvas.setHeight(height);
+            }
+        });
+        jQuery("#page_height").on("change", function () {
+            if (jQuery("#page_height").val() != "" && parseInt(jQuery("#page_height").val()) > 0)
+            {
+
+                var height = parseInt(jQuery("#page_height").val());
+                var width = parseInt(jQuery("#page_height").val()) + canvas.width;
+                canvas.setWidth(width);
+                canvas.setHeight(height);
+            }
+        });
+
+        // var scaleControl = $('scale-control');
+        // scaleControl.onchange = function() {
+        //     canvas.getActiveObject().scale(parseFloat(this.value)).setCoords();
+        //     canvas.requestRenderAll();
+        // };
+
+        var topControl = $('top-control');
+        topControl.onchange = function() {
+            canvas.getActiveObject().set('top', parseInt(this.value, 10)).setCoords();
+            canvas.requestRenderAll();
+        };
+
+        var widthControl = $('width-control');
+        widthControl.oninput = function() {
+            canvas.getActiveObject().set('width', parseInt(this.value, 10)).setCoords();
+            canvas.requestRenderAll();
+        };
+
+        var heightControl = $('height-control');
+        heightControl.onchange = function() {
+            canvas.getActiveObject().set('height', parseInt(this.value, 10)).setCoords();
+            canvas.requestRenderAll();
+        };
+
+        var leftControl = $('left-control');
+        leftControl.onchange = function() {
+            canvas.getActiveObject().set('left', parseInt(this.value, 10)).setCoords();
+            canvas.requestRenderAll();
+        };
+
+        var angleControl = $('angle-control');
+        angleControl.onchange = function() {
+            canvas.getActiveObject().set('angle', parseInt(this.value, 10)).setCoords();
+            canvas.requestRenderAll();
+        };
+
+          // var skewXControl = $('skewX-control');
+          // skewXControl.onchange = function() {
+          //   canvas.getActiveObject().set('skewX', parseInt(this.value, 10)).setCoords();
+          //   canvas.requestRenderAll();
+          // };
+
+          // var skewYControl = $('skewY-control');
+          // skewYControl.onchange = function() {
+          //   canvas.getActiveObject().set('skewY', parseInt(this.value, 10)).setCoords();
+          //   canvas.requestRenderAll();
+          // };
+
+        canvas.on("selection:created", function(e) {
+        var activeObj = canvas.getActiveObject();
+          if(activeObj.type !== "group" && activeObj.type !== undefined) {
+            console.log("Group created");
+            var groupWidth = e.target.getWidth();
+            var groupHeight = e.target.getHeight();
+
+
+
+            document.getElementById("width-control").value="";
+            document.getElementById("height-control").value="";
+            document.getElementById("left-control").value="";
+            document.getElementById("top-control").value="";
+            document.getElementById("angle-control").value="";
+            jQuery("#width-control").val(groupWidth);
+            jQuery("#height-control").val(groupHeight);
+            if(e.target.forEachObject!=null)
+            e.target.forEachObject(function(obj) {
+                var itemWidth = obj.getBoundingRect().width;
+              var itemHeight = obj.getBoundingRect().height;
+
+
+
+              
+              // ================================
+                    // OBJECT ALIGNMENT: " H-LEFT "
+                    // ================================
+              jQuery('#objAlignLeft').click(function() {
+                  obj.set({
+                    left: -(groupWidth / 2),
+                    originX: 'left'
+                  });
+                obj.setCoords();
+                canvas.renderAll();
+              });
+              // ================================
+                    // OBJECT ALIGNMENT: " H-CENTER "
+                    // ================================
+              jQuery('#objAlignCenter').click(function() {
+                  obj.set({
+                    left: (0 - itemWidth/2),
+                    originX: 'left'
+                  });
+                obj.setCoords();
+                canvas.renderAll();
+              });
+              // ================================
+                    // OBJECT ALIGNMENT: " H-RIGHT "
+                    // ================================
+              jQuery('#objAlignRight').click(function() {
+                  obj.set({
+                    left: (groupWidth/2 - itemWidth/2),
+                    originX: 'center'
+                  });
+                obj.setCoords();
+                canvas.renderAll();
+              });
+
+              jQuery('#objAlignTop').click(function() {
+                  obj.set({
+                    top: -(groupHeight / 2),
+                    originX: 'left'
+                  });
+                obj.setCoords();
+                canvas.renderAll();
+              });
+            
+
+              jQuery('#objAlignMiddle').click(function() {
+                  obj.set({
+                    top: -(itemHeight / 2),
+                    originX: 'left'
+                  });
+                obj.setCoords();
+                canvas.renderAll();
+              });
+
+              jQuery('#objAlignBottom').click(function() {
+
+                  obj.set({
+                    top: (groupHeight / 2) - itemHeight,
+                    originX: 'left'
+                  });
+                obj.setCoords();
+                canvas.renderAll();
+              });
+            
+            
+            });
+          }
+        }); 
+
+        jQuery("#bringFront").click(function(){
+            var items = canvas.getActiveObject() || canvas.getActiveGroup();
+
+            if(items)
+                items.bringForward();
+        });
+
+        jQuery("#bringForward").click(function(){
+          var items = canvas.getActiveObject() || canvas.getActiveGroup();
+
+          if(items)
+            items.bringToFront();
+        });
+
+        jQuery("#sendBack").click(function(){
+            var items = canvas.getActiveObject() || canvas.getActiveGroup();
+
+            if(items)
+                items.sendBackwards();
+        });
+
+        jQuery("#sendBackward").click(function(){
+          var items = canvas.getActiveObject() || canvas.getActiveGroup();
+
+          if(items)
+            items.sendToBack();
+        });
+
+        jQuery("#remove_object").click(function(){
+        var activeobject = canvas.getActiveObject();
+
+        if (activeobject.type === 'activeSelection') {
+            var objectsInGroup = activeobject.getObjects();
+
+            objectsInGroup.forEach(function(object) {
+                canvas.remove(object);
+                canvas.discardActiveObject();
+            });
+        }
+        else
+            canvas.remove(activeobject);
+
+        });     
+
+        var obj = canvas.getActiveObject();
+        jQuery("#alpha").change(function(){
+            var opacity = jQuery("#alpha").val();
+            opacity = opacity / 100;
+            jQuery(".slider-value").text(opacity);
+            canvas.getActiveObject().setOpacity(opacity)
+            canvas.renderAll();
+        });
+
+        
+
+     
+  
+
+  
+function getActiveShadow(name) {
+    var object = canvas.getActiveObject();
+    if (!object) return '';
+
+    return object[name] || '';
+}
+
+function setActiveShadow(name, value) {
+
+    var object = canvas.getActiveObject();
+    if (!object) return;
+    if(object.shadow)
+     object.shadow[name] = value;
+    else{
+     var ob = {};
+     ob[name] = value;
+     object.setShadow(ob);
+    }
+    
+    object.setCoords();
+}
+//var offsetXVal = 10;
+
+var setShadowOffsetX = $('setShadowOffsetX');
+  setShadowOffsetX.oninput = function() {
+    setActiveShadow('offsetX',parseFloat(this.value));
+    canvas.renderAll();
+};
+
+var setShadowOffsetY = $('setShadowOffsetY');
+  setShadowOffsetY.oninput = function() {
+    setActiveShadow('offsetY',parseFloat(this.value));
+    canvas.renderAll();
+};
+
+var setShadowBlur = $('setShadowBlur');
+  setShadowBlur.oninput = function() {
+    setActiveShadow('blur',parseFloat(this.value));
+    canvas.renderAll();
+};
+
+var setShadowColor = $('setShadowColor');
+  setShadowColor.oninput = function() {
+    setActiveShadow('color',(this.value));
+    canvas.renderAll();
+};
+
+
+var shadowify = function () {
+    var obj = canvas.getActiveObject();
+    if (!obj) return;
+
+    if (obj.shadow) {
+        obj.shadow = null;
+    } else {
+        obj.setShadow({
+            color: "#343233",
+            blur: 10,
+            offsetX: 10,
+            offsetY: 10
+        });
+    }
+    canvas.renderAll();
+};
+
+
+// Ruler JS
+
+/**
+ * Created by maor.frankel on 5/19/15.
+ */
+        var rul1 = new ruler({container: document.querySelector('#ruler_wrap')});
+        var guides1;
+        var visible1 = true;
+        var visibleGuides1 = true;
+
+
+
+        function hideRuler1(){
+          rul1.api.toggleRulerVisibility(visibleGuides1 = !visibleGuides1);
+        }
+
+
+        function hideGuides1(){
+          rul1.api.toggleGuideVisibility(visible1 = !visible1);
+        }
+
+        function destory1(){
+          rul1.api.destroy();
+        }
+
+
+        function setBgImg() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("bgImg").files[0]);
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("bgImg").src = oFREvent.target.result;
+
+                var imgUrl =  document.getElementById("bgImg").src;
+              
+                var img = new Image();
+     
+                img.src = imgUrl;  
+
+                canvas.setBackgroundColor({source: imgUrl, repeat: 'repeat'}, function () {
+                    canvas.renderAll();
+                });
+
+            };        
+        }
+
+        var removeBgImg = function () {
+            canvas.backgroundImage = 0; 
+            canvas.backgroundColor = "#fff";
+            canvas.renderAll();
+        };
+
+        // var setBgColor = function () {
+        //     canvas.backgroundImage = 0; 
+        //     canvas.backgroundColor = "#fff";
+        //     canvas.renderAll();
+        // };
+
+        var setBgColor = $('setBgColor');
+          setBgColor.oninput = function() {
+            canvas.backgroundColor = (this.value);
+            canvas.renderAll();
+        };
+
+    
+    </script>
+</body>
+</html>
