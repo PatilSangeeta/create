@@ -1,2 +1,2 @@
 # create
-create layout
+Creates pretty shapes with fabric.js
